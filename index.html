@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles.css" rel="stylesheet" >
-    <title>Adivinhe a palavra</title>
+	<link href="./styles.css" rel="stylesheet">
+    <title>Jogo da Forca</title>
 </head>
 <body>
-    <div>
-        <header>
-            <h1> Adivinhe a palavra!</h1>
-            <h2>Dica: </h2>
-            <h3>Animais </h3>
-        </header>
-    </div>
+	<div class="container">
+		<h1>Jogo da Forca </h1>
+        <div class="hint">
+            <h3> Dica: animal!</h3> 
+        </div>
 
-    <section>
-        <h2> Digite uma letra </h2>
-        <input placeholder="Uma letra" id="letter-input">
-       
-    </section>
+        <div class="input-container">
+			<input type="text" id="letter" placeholder="Insira uma letra">
+			<button id="submit" onclick="guess()">Adivinhar</button>
+		</div>
 
-    <section>
-        <p>Resultado:</p>
-        <div class="palavra-certa"></div>
+		<div class="word-container">
+			<h2>Palavra:</h2>
+			<p id="word"></p>
+		</div>
+		<div class="guesses-container">
+			<h2>Letras usadas:</h2>
+			<p id="guesses"></p>
+		</div>
+		
+		<div class="message-container">
+			<p id="message"></p>
+			<button id="play-again" onclick="reset()">Jogar novamente</button>
+		</div>
+	</div>
 
-    </section>
-
-    <aside Class="letras-erradas">
-        <h4>Letras Erradas</h4>
-    </aside>
-    
-
+	
 </body>
-
-    <script src="./script.js"></script>
+<script src="script.js"></script>
 </html>

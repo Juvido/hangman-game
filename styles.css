@@ -1,4 +1,52 @@
 * {
   margin: 0;
   padding: 0;
+  width: 80vw;
+}
+
+.container {
+  width: 80vw;
+  text-align: center;
+  gap: 2em;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+
+h1, .hint {
+  padding: 0.6em;
+}
+
+.hint {
+  width: 70vw;
+  background-color: #b8b4b4;
+  text-align: center;
+}
+
+#letter {
+  width: 18vw;
+  height: 70%;
+  border-color: #7068FF;
+  border-radius: 0.8em;
+}
+
+#submit {
+  width: 70vw;
+  height: 73%;
+  background-color: #7068FF;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 0.8em;
 }

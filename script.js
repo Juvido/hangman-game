@@ -1,60 +1,70 @@
-const letterInput = document.getElementById("letter-input")
+const words = ["elefante", "rinoceronte", "urso", "macaco"];
+let word = "";
+let guesses = [];
+let remainingGuesses = 6;
 
+const wordDisplay = document.getElementById("word");
+const guessesDisplay = document.getElementById("guesses");
+const letterInput = document.getElementById("letter");
+const messageDisplay = document.getElementById("message");
+const playAgainButton = document.getElementById("play-again");
 
-const variasPalavras = ["rinoceronte", "elefante", "passaro"]
-const palavraChave = variasPalavras[Math.floor(Math.random() * variasPalavras.length)]
+function chooseWord() {
+  return words[Math.floor(Math.random() * words.length)];
+}
 
-const letraCerta =[]
-const letraErrada = []
-console.log(palavraChave)
-//de a ate z - intervalo entre 65 - 90
-document.addEventListener("keydown", (evento) => {
-    const codigo = evento.keyCode;
-    
-    if(isLetra(codigo)){
-        const letra = evento.key;
-        if (letraErrada.includes(letra)){
-            alert("Letra Errada!")
-        } else{
-            if (palavraChave.includes(letra)){
-                letraCerta.push(letra)
-            } else {
-                letraErrada.push(letra);
-            }
-        }
-    atualizar()
+function updateWordDisplay() {
+  let wordArray = word.split("");
+  let displayArray = wordArray.map(letter => guesses.includes(letter) ? letter : "_");
+  wordDisplay.textContent = displayArray.join(" ");
+}
+
+function updateGuessesDisplay() {
+  guessesDisplay.textContent = guesses.join(", ");
+}
+
+function guess() {
+  let letter = letterInput.value.toLowerCase();
+  
+  if (!letter.match(/[a-z]/)) {
+    messageDisplay.textContent = "Por favor, insira uma letra válida.";
+    return;
+  }
+  
+  if (guesses.includes(letter)) {
+    messageDisplay.textContent = "Essa letra já foi usada. Tente outra.";
+    return;
+  }
+  
+  guesses.push(letter);
+  updateGuessesDisplay();
+  
+  if (word.includes(letter)) {
+    updateWordDisplay();
+    if (!wordDisplay.textContent.includes("_")) {
+      messageDisplay.textContent = "Parabéns! Você venceu!";
+      playAgainButton.style.display = "block";
     }
-})
-
-function atualizar () {
-    mostrarLetraErrada()
-    mostrarLetraCerta()
+  } else {
+    remainingGuesses--;
+    messageDisplay.textContent = `Letra incorreta. Você tem ${remainingGuesses} tentativas restantes.`;
+    if (remainingGuesses === 0) {
+      messageDisplay.textContent = `Você perdeu. A palavra era ${word}.`;
+      playAgainButton.style.display = "block";
+    }
+  }
+  
+  letterInput.value = "";
 }
 
-function mostrarLetraErrada (){
-    const errou = document.querySelector(".letras-erradas")
-    errou.innerHTML = "<h4>Letras Erradas</h4>"
-    letraErrada.forEach(letra =>{
-        errou.innerHTML += `<span>${letra}</span>`
-    })
+function reset() {
+  word = chooseWord();
+  guesses = [];
+  remainingGuesses = 6;
+  updateWordDisplay();
+  updateGuessesDisplay();
+  messageDisplay.textContent = "";
+  playAgainButton.style.display = "none";
 }
 
-function mostrarLetraCerta (){
-    const certo = document.querySelector(".palavra-certa")
-    certo.innerHTML = "";
-    palavraChave.split("").forEach(letra =>{
-        if(letraCerta.includes(letra)) {
-            certo.innerHTML += `<span>${letra}</span>`
-        } else {
-            certo.innerHTML += `<span> _ </span>`
-        }
-    })
-}
-
-function isLetra (codigo) {
-    return codigo >=65 && codigo <= 90;
-}
-
-
-
-
+reset();
