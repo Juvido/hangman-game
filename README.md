@@ -1,3 +1,2 @@
-**Hangman-game**
-
-Enter some letters to try to guess the word
+# jogo-da-forca
+Jogo de adivinhacao de letras para formar uma palavra
