@@ -25,12 +25,13 @@
 }
 
 
-h1, .hint {
+h1  {
   padding: 0.6em;
 }
 
 .hint {
   width: 70vw;
+  padding: 0.5em 0;
   background-color: #b8b4b4;
   text-align: center;
 }
@@ -42,6 +43,19 @@ h1, .hint {
   border-radius: 0.8em;
 }
 
+.word-container > h2 {
+  font-size: 2.1em;
+}
+
+#word {
+  color: #271ed4;
+  font-size: 2.5em;
+}
+
+.guesses-container > h2 {
+  font-size: 1.7em;
+}
+
 #submit {
   width: 70vw;
   height: 73%;
@@ -49,4 +63,29 @@ h1, .hint {
   color: #ffffff;
   border-color: #ffffff;
   border-radius: 0.8em;
+}
+
+#tentatives {
+  color: #ec407a;
+  font-size: 1.8em;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 2em;
+
+}
+
+#play-again {
+  width: 20vw;
+  height: 73%;
+  background-color: #7068FF;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-radius: 0.8em;
+
 }
