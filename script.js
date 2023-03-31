@@ -26,10 +26,10 @@ function updateTentativeDisplay() {
 function check() {
   let letter = letterInput.value.toLowerCase();
   
-//   if (!letter.match(/[a-z]/)) {
-//     messageDisplay.textContent = "Insira uma letra válida";
-//     return;
-//   }
+   if (!letter.match(/[a-z]/)) {
+    messageDisplay.textContent = "Insira uma letra válida";
+     return;
+   }
   
   if (tentatives.includes(letter)) {
     messageDisplay.textContent = "Essa letra já foi usada!";
